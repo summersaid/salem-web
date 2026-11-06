@@ -101,8 +101,15 @@
   .step p{color:var(--muted);font-size:15px}
 
   /* nosotros */
-  .about{display:grid;grid-template-columns:auto 1fr;gap:44px;align-items:center}
-  @media (max-width:700px){.about{grid-template-columns:1fr}}
+  .about{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  @media (max-width:760px){.about{grid-template-columns:1fr;gap:28px}}
+  .team{background:#000;color:#fff;padding-bottom:0}
+  .team .lead{color:#c9c5bd}
+  .team .about > div{padding-bottom:88px}
+  @media (max-width:760px){.team{padding-bottom:0}.team .about > div{padding-bottom:72px}}
+  .photo{display:block;align-self:end}
+  .photo img{width:100%;height:auto;display:block;-webkit-mask-image:linear-gradient(to bottom,#000 78%,transparent 100%);mask-image:linear-gradient(to bottom,#000 78%,transparent 100%)}
+  .teamlogo{width:150px;display:block;margin-bottom:28px}
   .bigmono{width:240px;background:var(--ink);border-radius:20px;padding:34px 30px}
   .bigmono img{width:100%;display:block}
 
@@ -313,11 +320,15 @@
   </div>
 </section>
 
-<section id="nosotros">
+<section id="nosotros" class="team">
   <div class="wrap about">
-    <div class="bigmono"><img src="img/logo-salem.png" alt="Salem Gestión Contable"></div>
+    <picture class="photo">
+      <source srcset="img/matias-vanessa.webp" type="image/webp">
+      <img src="img/matias-vanessa.jpg" width="900" height="1065" loading="lazy" alt="Vanessa y Matías Salem, contadores de Salem &amp; Salem">
+    </picture>
     <div>
-      <div class="eyebrow dark">Quiénes somos</div>
+      <img class="teamlogo" src="img/logo-salem.png" alt="Salem Gestión Contable">
+      <div class="eyebrow">Quiénes somos</div>
       <h2>Matías y Vanessa Salem.</h2>
       <p class="lead">Contadores públicos matriculados. Somos un estudio joven que cree que el contador tiene que ser un aliado estratégico, no alguien que aparece una vez por mes con un VEP. Usamos la tecnología a nuestro favor para estar más cerca de cada cliente, no más lejos.</p>
     </div>
