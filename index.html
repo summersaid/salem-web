@@ -4,344 +4,405 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Salem & Salem · Estudio Contable</title>
-<meta name="description" content="Estudio contable de Matías y Vanessa Salem. Asesoramiento contable integral y personalizado para empresas, PyMEs, vendedores online, profesionales y particulares en toda Argentina.">
-<meta property="og:title" content="Salem & Salem · Estudio Contable">
-<meta property="og:description" content="Asesoramiento contable personalizado, no genérico. Primera consulta y diagnóstico sin cargo.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://salemgestioncontable.com.ar/">
-<meta name="theme-color" content="#0f0f0f">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%230f0f0f'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='Georgia,serif' font-size='28' fill='%23c9a45c'%3ES%26amp;S%3C/text%3E%3C/svg%3E">
+<meta name="description" content="Estudio contable de Matías y Vanessa Salem. Asesoramiento contable personalizado para vendedores online, PyMEs, profesionales y particulares en toda Argentina.">
+<meta name="theme-color" content="#0b0b0b">
+<link rel="icon" href="img/monograma.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#0f0f0f; --ink-2:#1a1a1a; --gold:#c9a45c; --gold-2:#e2c88f;
-    --paper:#faf8f4; --text:#1d1d1d; --muted:#5f5b55; --line:#e6e0d6;
-    --serif:"Cormorant Garamond", Georgia, serif;
-    --sans:"Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --ink:#0b0b0b; --ink-2:#141414; --ink-3:#1d1d1d; --line-d:#2a2a2a;
+    --gold:#c9a45c; --gold-2:#e6cd94; --gold-3:#8c7240;
+    --paper:#f6f2ea; --paper-2:#ece6da; --text:#161616; --muted:#5f5a52; --line:#ddd5c6;
+    --serif:"Instrument Serif", Georgia, serif;
+    --sans:"Inter Tight", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --ease:cubic-bezier(.2,.7,.1,1);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{font-family:var(--sans);color:var(--text);background:var(--paper);line-height:1.6;font-size:17px;-webkit-font-smoothing:antialiased}
-  a{color:inherit}
-  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+  body{font-family:var(--sans);background:var(--ink);color:#eee;line-height:1.55;font-size:17px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%;height:auto}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 22px}
+  .serif{font-family:var(--serif);font-weight:400}
+  em{font-style:italic;color:var(--gold-2)}
 
-  /* header */
-  header{position:sticky;top:0;z-index:10;background:rgba(15,15,15,.92);backdrop-filter:blur(8px);border-bottom:1px solid #2a2a2a}
-  header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
-  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff}
-  .mono{width:40px;height:auto;display:block}
-  .brand span{font-family:var(--serif);font-size:20px;letter-spacing:.5px}
-  .brand small{display:block;font-family:var(--sans);font-size:10px;letter-spacing:2.5px;color:var(--gold);text-transform:uppercase;margin-top:-2px}
-  nav a{color:#ddd;text-decoration:none;font-size:14px;margin-left:24px}
-  nav a:hover{color:var(--gold-2)}
-  nav .btn{margin-left:24px}
-  @media (max-width:760px){nav a:not(.btn){display:none} nav .wide{display:none}}
-  nav .btn{white-space:nowrap}
+  /* reveal */
+  .rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+  .rv.in{opacity:1;transform:none}
+  .rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}
+  @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}*{animation:none!important;transition:none!important}}
 
-  .btn{display:inline-block;background:var(--gold);color:var(--ink);text-decoration:none;font-weight:600;font-size:15px;padding:12px 22px;border-radius:999px;transition:background .2s, transform .2s}
-  .btn:hover{background:var(--gold-2);transform:translateY(-1px)}
-  .btn.ghost{background:transparent;color:#fff;border:1px solid #555}
-  .btn.ghost:hover{border-color:var(--gold);color:var(--gold-2);background:transparent}
-  header .btn{padding:9px 18px;font-size:14px}
+  /* nav */
+  header{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .4s,backdrop-filter .4s,border-color .4s;border-bottom:1px solid transparent}
+  header.solid{background:rgba(11,11,11,.78);backdrop-filter:blur(14px);border-color:var(--line-d)}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand img{width:38px}
+  .brand b{font-family:var(--serif);font-weight:400;font-size:22px;letter-spacing:.3px}
+  nav{display:flex;align-items:center;gap:6px}
+  nav a.l{font-size:14px;color:#bbb;padding:8px 14px;border-radius:999px;transition:color .25s,background .25s}
+  nav a.l:hover{color:#fff;background:#1c1c1c}
+  @media (max-width:820px){nav a.l{display:none}}
+  .btn{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:15px;padding:13px 22px;border-radius:999px;background:var(--gold);color:#111;transition:transform .3s var(--ease),background .3s;white-space:nowrap}
+  .btn:hover{background:var(--gold-2);transform:translateY(-2px)}
+  .btn .ar{display:inline-block;transition:transform .3s var(--ease)}
+  .btn:hover .ar{transform:translateX(4px)}
+  .btn.sm{padding:10px 18px;font-size:14px}
+  .btn.ghost{background:transparent;color:#fff;border:1px solid #3a3a3a}
+  .btn.ghost:hover{border-color:var(--gold);background:transparent}
 
   /* hero */
-  .hero{background:var(--ink);color:#fff;padding:96px 0 136px;position:relative;overflow:hidden}
-  .hero::after{content:"";position:absolute;right:-180px;top:-120px;width:520px;height:520px;border-radius:50%;border:1px solid rgba(201,164,92,.25)}
-  .hero::before{content:"";position:absolute;right:-90px;top:-30px;width:340px;height:340px;border-radius:50%;border:1px solid rgba(201,164,92,.15)}
-  .eyebrow{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--gold)}
-  .hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(40px,6vw,68px);line-height:1.05;margin:18px 0 22px;max-width:780px}
-  .hero h1 em{font-style:italic;color:var(--gold-2)}
-  .hero p{color:#c9c5bd;max-width:600px;font-size:18px}
-  .hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
-  .hero .note{font-size:13px;color:#8d887f;margin-top:14px}
+  .hero{min-height:100svh;display:grid;align-items:end;position:relative;padding:120px 0 0;overflow:hidden}
+  .hero .glow{position:absolute;width:780px;height:780px;border-radius:50%;background:radial-gradient(circle,rgba(201,164,92,.22),transparent 62%);left:var(--mx,22%);top:var(--my,55%);transform:translate(-50%,-50%);pointer-events:none;transition:left .6s var(--ease),top .6s var(--ease)}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:20px;align-items:center;position:relative}
+  .hero{min-height:auto;align-items:start;padding-top:96px}
+  .hero-grid > div:first-child{padding:20px 0 40px}
+  @media (max-width:900px){.hero-grid{grid-template-columns:1fr}}
+  .kicker{display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold)}
+  .kicker::before{content:"";width:28px;height:1px;background:var(--gold)}
+  h1{font-family:var(--serif);font-weight:400;font-size:clamp(42px,5.4vw,78px);line-height:1;letter-spacing:-1px;margin:22px 0 24px}
+  .strike{position:relative;color:#8a857c;white-space:nowrap}
+  .strike::after{content:"";position:absolute;left:-2%;right:-2%;top:54%;height:3px;background:var(--gold);transform:scaleX(0);transform-origin:left;animation:strike 1s .9s var(--ease) forwards}
+  @keyframes strike{to{transform:scaleX(1)}}
+  .swap{display:inline-block;color:var(--gold-2);font-style:italic;min-width:4ch}
+  .swap span{display:inline-block;animation:wordIn .7s var(--ease)}
+  @keyframes wordIn{from{opacity:0;transform:translateY(.4em);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
+  .hero p.lead{color:#b9b3a8;max-width:520px;font-size:18px}
+  .hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin:34px 0 56px}
+  .hero-photo{position:relative;align-self:end}
+  .hero-photo img{width:100%;max-width:440px;margin-left:auto;-webkit-mask-image:linear-gradient(to bottom,#000 68%,transparent),linear-gradient(to right,transparent,#000 12%,#000 88%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(to bottom,#000 68%,transparent),linear-gradient(to right,transparent,#000 12%,#000 88%,transparent);mask-composite:intersect}
+  .hero{background:#000}
+  .badge{position:absolute;left:0;bottom:22%;background:rgba(20,20,20,.85);backdrop-filter:blur(10px);border:1px solid var(--line-d);border-radius:16px;padding:14px 18px;font-size:14px;display:flex;gap:12px;align-items:center;animation:float 5s ease-in-out infinite}
+  .badge .dot{width:9px;height:9px;border-radius:50%;background:#3ccf6e;box-shadow:0 0 0 4px rgba(60,207,110,.18)}
+  .badge small{display:block;color:#8d887f;font-size:12px}
+  @keyframes float{50%{transform:translateY(-8px)}}
+  @media (max-width:900px){.hero{padding-top:110px}.hero-photo img{max-width:420px;margin:0 auto}.badge{left:8px}.hero .ctas{margin-bottom:28px}}
 
-  section{padding:88px 0}
-  h2{font-family:var(--serif);font-weight:500;font-size:clamp(32px,4.4vw,46px);line-height:1.1;margin:12px 0 18px}
-  .lead{color:var(--muted);max-width:640px;font-size:18px}
-  .eyebrow.dark{color:#a5833f}
+  /* marquee */
+  .marquee{border-block:1px solid var(--line-d);overflow:hidden;background:var(--ink-2);-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+  @media (prefers-reduced-motion:reduce){
+    .marquee{-webkit-mask-image:none;mask-image:none}
+    .strike::after{transform:scaleX(1)}
+    .marquee .track{width:auto;flex-wrap:wrap;justify-content:center;gap:10px 34px;padding:20px 22px}
+    .marquee .track span{font-size:22px;gap:34px}
+    .marquee .track span:nth-child(n+9){display:none}
+    .marquee .track span:nth-child(8)::after{display:none}
+  }
+  .track{display:flex;gap:46px;width:max-content;padding:20px 0;animation:mq 36s linear infinite}
+  .marquee:hover .track{animation-play-state:paused}
+  .track span{font-family:var(--serif);font-size:26px;color:#d9d3c7;white-space:nowrap;display:flex;align-items:center;gap:46px}
+  .track span::after{content:"✦";color:var(--gold);font-size:14px}
+  @keyframes mq{to{transform:translateX(-50%)}}
 
-  /* enfoque */
-  .compare{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:44px}
-  @media (max-width:760px){.compare{grid-template-columns:1fr}}
-  .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:30px}
-  .card h3{font-size:13px;letter-spacing:2px;text-transform:uppercase;margin-bottom:18px;color:var(--muted)}
-  .card ul{list-style:none}
-  .card li{padding:10px 0 10px 28px;position:relative;border-top:1px solid var(--line)}
-  .card li:first-child{border-top:0}
-  .card.no li::before{content:"–";position:absolute;left:4px;color:#aaa}
-  .card.yes{background:var(--ink);color:#eee;border-color:var(--ink)}
-  .card.yes h3{color:var(--gold)}
-  .card.yes li{border-color:#2c2c2c}
-  .card.yes li::before{content:"✓";position:absolute;left:2px;color:var(--gold)}
+  section{padding:120px 0;position:relative}
+  .light{background:var(--paper);color:var(--text)}
+  .light .kicker{color:#9a7b3e}.light .kicker::before{background:#9a7b3e}
+  h2{font-family:var(--serif);font-weight:400;font-size:clamp(38px,5.4vw,68px);line-height:1.02;letter-spacing:-.5px;margin:16px 0 0}
+  .light em{color:#9a7b3e}
+  .sub{color:var(--muted);max-width:520px;margin-top:18px}
+  .dark .sub{color:#a9a399}
 
-  /* servicios */
-  .alt{background:#f2eee7}
-  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
-  @media (max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
-  @media (max-width:600px){.grid{grid-template-columns:1fr}}
-  .svc{background:#fff;border:1px solid var(--line);border-radius:14px;padding:26px}
-  .svc .n{font-family:var(--serif);color:var(--gold);font-size:22px}
-  .svc h3{font-size:18px;margin:6px 0 8px}
-  .svc p{color:var(--muted);font-size:15px}
+  /* toggle compare */
+  .cmp-head{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap}
+  .switch{display:inline-flex;background:var(--paper-2);border-radius:999px;padding:5px;position:relative;border:1px solid var(--line)}
+  .switch button{all:unset;cursor:pointer;position:relative;z-index:1;padding:11px 22px;font-size:15px;font-weight:600;color:var(--muted);transition:color .35s}
+  .switch button.on{color:#fff}
+  .switch .pill{position:absolute;top:5px;bottom:5px;left:5px;border-radius:999px;background:var(--ink);transition:transform .5s var(--ease),width .5s var(--ease)}
+  .cmp{margin-top:50px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  @media (max-width:900px){.cmp{grid-template-columns:1fr 1fr}}
+  @media (max-width:520px){.cmp{grid-template-columns:1fr 1fr;gap:10px}.flip{height:170px}.face{padding:16px;border-radius:16px}.face p{font-size:21px}.face .ic{font-size:10px;letter-spacing:1.2px}.switch button{padding:10px 14px;font-size:13px;white-space:nowrap}}
+  .flip{perspective:1200px;height:210px}
+  .flip .in{position:relative;width:100%;height:100%;transition:transform .8s var(--ease);transform-style:preserve-3d}
+  .cmp.salem .flip .in{transform:rotateY(180deg)}
+  .cmp .flip:nth-child(2) .in{transition-delay:.07s}.cmp .flip:nth-child(3) .in{transition-delay:.14s}.cmp .flip:nth-child(4) .in{transition-delay:.21s}
+  .face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:20px;padding:26px;display:flex;flex-direction:column;justify-content:space-between}
+  .face.a{background:#fff;border:1px solid var(--line);color:#7b766d}
+  .face.b{background:var(--ink);color:#eee;transform:rotateY(180deg)}
+  .face .ic{font-size:13px;letter-spacing:2px;text-transform:uppercase}
+  .face.a .ic{color:#aaa49a}.face.b .ic{color:var(--gold)}
+  .face p{font-family:var(--serif);font-size:27px;line-height:1.1}
+  .face.a p{text-decoration:line-through;text-decoration-color:#cfc7b8;text-decoration-thickness:1px}
 
-  /* online */
-  .split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
-  @media (max-width:860px){.split{grid-template-columns:1fr;gap:32px}}
-  .qs{list-style:none}
-  .qs li{background:#fff;border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:10px;padding:14px 18px;margin-bottom:10px;font-size:16px}
+  /* caminos tabs */
+  .paths{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:56px;align-items:start}
+  @media (max-width:820px){.paths{grid-template-columns:1fr}}
+  .path{border:1px solid var(--line-d);border-radius:24px;background:var(--ink-2);overflow:hidden;transition:border-color .4s,background .4s}
+  .path:hover{border-color:#3d3d3d}
+  .path.open{border-color:var(--gold-3);background:#151310}
+  .path summary{list-style:none;cursor:pointer;padding:32px;display:flex;justify-content:space-between;gap:20px;align-items:center}
+  .path summary::-webkit-details-marker{display:none}
+  .path .num{font-size:13px;letter-spacing:2px;color:var(--gold);text-transform:uppercase}
+  .path h3{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3vw,38px);line-height:1.05;margin-top:8px}
+  .plus{flex:none;width:46px;height:46px;border-radius:50%;border:1px solid #3a3a3a;display:grid;place-items:center;transition:transform .5s var(--ease),background .4s,border-color .4s}
+  .plus::before,.plus::after{content:"";position:absolute;width:14px;height:1.5px;background:#eee}
+  .plus::after{transform:rotate(90deg);transition:transform .5s var(--ease)}
+  .plus{position:relative}
+  .open .plus{background:var(--gold);border-color:var(--gold);transform:rotate(180deg)}
+  .open .plus::before,.open .plus::after{background:#111}
+  .open .plus::after{transform:rotate(0)}
+  .body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .6s var(--ease)}
+  .open .body{grid-template-rows:1fr}
+  .body > div{overflow:hidden}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;padding:0 32px 32px}
+  .chip{border:1px solid #3a3a3a;border-radius:999px;padding:9px 16px;font-size:14px;color:#d8d2c6;opacity:0;transform:translateY(10px);transition:opacity .5s,transform .5s var(--ease)}
+  .open .chip{opacity:1;transform:none}
+  .open .chip:nth-child(2){transition-delay:.06s}.open .chip:nth-child(3){transition-delay:.12s}.open .chip:nth-child(4){transition-delay:.18s}.open .chip:nth-child(5){transition-delay:.24s}
 
-  /* cómo */
-  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:44px;counter-reset:s}
-  @media (max-width:760px){.steps{grid-template-columns:1fr}}
-  .step{border-top:1px solid var(--gold);padding-top:20px}
-  .step::before{counter-increment:s;content:"0" counter(s);font-family:var(--serif);font-size:30px;color:var(--gold)}
-  .step h3{font-size:18px;margin:4px 0 8px}
-  .step p{color:var(--muted);font-size:15px}
+  /* servicios accordion */
+  .svc{margin-top:56px;border-top:1px solid var(--line)}
+  .svc details{border-bottom:1px solid var(--line)}
+  .svc summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:70px 1fr auto;align-items:center;gap:18px;padding:28px 0;transition:padding .4s var(--ease)}
+  .svc summary::-webkit-details-marker{display:none}
+  .svc summary:hover{padding-left:12px}
+  .svc .n{font-family:var(--serif);font-size:22px;color:#9a7b3e}
+  .svc h3{font-family:var(--serif);font-weight:400;font-size:clamp(26px,3.4vw,42px);line-height:1.05}
+  .svc .plus{border-color:var(--line)}
+  .svc .plus::before,.svc .plus::after{background:var(--text)}
+  .svc .open .plus{background:var(--ink);border-color:var(--ink)}
+  .svc .open .plus::before,.svc .open .plus::after{background:var(--gold)}
+  .svc .body p{padding:0 0 30px 88px;max-width:720px;color:var(--muted)}
+  @media (max-width:600px){.svc summary{grid-template-columns:44px 1fr auto}.svc .body p{padding-left:62px}}
 
-  /* nosotros */
-  .about{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
-  @media (max-width:760px){.about{grid-template-columns:1fr;gap:28px}}
-  .team{background:#000;color:#fff;padding-bottom:0}
-  .team .lead{color:#c9c5bd}
-  .team .about > div{padding-bottom:88px}
-  @media (max-width:760px){.team{padding-bottom:0}.team .about > div{padding-bottom:72px}}
-  .photo{display:block;align-self:end}
-  .photo img{width:100%;height:auto;display:block;-webkit-mask-image:linear-gradient(to bottom,#000 78%,transparent 100%);mask-image:linear-gradient(to bottom,#000 78%,transparent 100%)}
-  .teamlogo{width:150px;display:block;margin-bottom:28px}
-  .bigmono{width:240px;background:var(--ink);border-radius:20px;padding:34px 30px}
-  .bigmono img{width:100%;display:block}
+  /* faq / online */
+  .faq-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:start}
+  @media (max-width:900px){.faq-grid{grid-template-columns:1fr;gap:30px}}
+  .faq-grid .sticky{position:sticky;top:110px}
+  .q{border:1px solid var(--line-d);border-radius:18px;background:var(--ink-2);margin-bottom:10px;transition:border-color .3s}
+  .q.open{border-color:var(--gold-3)}
+  .q summary{list-style:none;cursor:pointer;padding:22px 24px;display:flex;justify-content:space-between;gap:16px;align-items:center;font-size:17px;font-weight:500}
+  .q summary::-webkit-details-marker{display:none}
+  .q .plus{width:34px;height:34px}
+  .q .body p{padding:0 24px 22px;color:#aaa49a;font-size:16px}
 
-  /* caminos */
-  .paths{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:-56px;position:relative;z-index:2}
-  @media (max-width:760px){.paths{grid-template-columns:1fr}}
-  .path{background:#fff;border:1px solid var(--line);border-radius:18px;padding:32px;box-shadow:0 18px 40px -24px rgba(0,0,0,.25);text-decoration:none;display:block;transition:transform .2s,border-color .2s}
-  .path:hover{transform:translateY(-3px);border-color:var(--gold)}
-  .path .eyebrow{color:#a5833f}
-  .path h3{font-family:var(--serif);font-weight:500;font-size:30px;line-height:1.15;margin:8px 0 16px}
-  .path ul{list-style:none}
-  .path li{padding:7px 0 7px 22px;position:relative;color:var(--muted);font-size:15px}
-  .path li::before{content:"";position:absolute;left:2px;top:15px;width:8px;height:1px;background:var(--gold)}
-  .path .go{display:inline-block;margin-top:14px;font-weight:600;font-size:14px;color:var(--text)}
-  .path .go::after{content:" →";color:var(--gold)}
+  /* proceso */
+  .steps{margin-top:64px;display:grid;grid-template-columns:repeat(3,1fr);gap:28px;position:relative}
+  .steps::before{content:"";position:absolute;top:22px;left:22px;right:22px;height:1px;background:var(--line)}
+  .steps .bar{position:absolute;top:22px;left:22px;height:1px;background:#9a7b3e;width:0;transition:width 1.6s var(--ease)}
+  .steps.in .bar{width:calc(100% - 44px)}
+  .st .dot{width:45px;height:45px;border-radius:50%;background:var(--paper);border:1px solid #9a7b3e;display:grid;place-items:center;font-family:var(--serif);font-size:20px;color:#9a7b3e;position:relative;z-index:1;transition:background .5s,color .5s}
+  .steps.in .st .dot{background:var(--ink);color:var(--gold)}
+  .steps.in .st:nth-child(3) .dot{transition-delay:.5s}.steps.in .st:nth-child(4) .dot{transition-delay:1s}
+  .st h3{font-family:var(--serif);font-weight:400;font-size:30px;margin:22px 0 8px}
+  .st p{color:var(--muted);font-size:16px;max-width:300px}
+  @media (max-width:760px){.steps{grid-template-columns:1fr}.steps::before,.steps .bar{display:none}}
 
-  /* para quién */
-  .tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:36px}
-  .tags span{border:1px solid #3a3a3a;color:#e9e4da;border-radius:999px;padding:10px 20px;font-size:13px;letter-spacing:2px;text-transform:uppercase}
-  .darksec{background:var(--ink);color:#fff}
-  .darksec .lead{color:#c9c5bd}
-  section{scroll-margin-top:64px}
+  /* feature tiles */
+  .tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:56px}
+  @media (max-width:900px){.tiles{grid-template-columns:1fr 1fr}}
+  @media (max-width:520px){.tiles{grid-template-columns:1fr}}
+  .tile{position:relative;border:1px solid var(--line-d);border-radius:22px;padding:28px;min-height:230px;background:var(--ink-2);overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;transition:border-color .4s,transform .4s var(--ease)}
+  .tile::before{content:"";position:absolute;inset:0;background:radial-gradient(400px circle at var(--x,50%) var(--y,0%),rgba(201,164,92,.16),transparent 45%);opacity:0;transition:opacity .4s}
+  .tile:hover{border-color:#3f3a30;transform:translateY(-4px)}
+  .tile:hover::before{opacity:1}
+  .tile svg{width:30px;height:30px;stroke:var(--gold);fill:none;stroke-width:1.4}
+  .tile h3{font-family:var(--serif);font-weight:400;font-size:28px;line-height:1.05;margin-top:30px}
+  .tile p{color:#9c968c;font-size:15px;margin-top:10px;max-height:0;opacity:0;transition:max-height .5s var(--ease),opacity .4s}
+  .tile:hover p,.tile:focus-within p{max-height:120px;opacity:1}
+  @media (hover:none){.tile p{max-height:none;opacity:1}}
 
-  /* cómo trabajamos */
-  .feats{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:44px}
-  @media (max-width:700px){.feats{grid-template-columns:1fr}}
-  .feat{display:flex;gap:18px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px}
-  .feat .ic{flex:none;width:44px;height:44px;border-radius:50%;background:var(--ink);display:grid;place-items:center}
-  .feat .ic svg{width:20px;height:20px;stroke:var(--gold);fill:none;stroke-width:1.6}
-  .feat h3{font-size:17px;margin-bottom:4px}
-  .feat p{color:var(--muted);font-size:15px}
+  /* about */
+  .about{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+  @media (max-width:860px){.about{grid-template-columns:1fr;gap:34px}}
+  .about .logo{width:130px;margin-bottom:26px}
+  .about .card{border-radius:28px;overflow:hidden;background:radial-gradient(circle at 50% 40%,#1a1610,#000 70%);border:1px solid var(--line-d);position:relative;aspect-ratio:1/1;display:grid;place-items:center}
+  .about .card img{width:52%;transform:scale(.9);opacity:.4;transition:transform 1.6s var(--ease),opacity 1.6s var(--ease)}
+  .about .card.in img{transform:scale(1);opacity:1}
+  .about .card::before,.about .card::after{content:"";position:absolute;border:1px solid rgba(201,164,92,.18);border-radius:50%;width:78%;aspect-ratio:1;animation:spin 40s linear infinite;border-style:dashed}
+  .about .card::after{width:92%;animation-duration:70s;animation-direction:reverse;border-style:solid;border-color:rgba(201,164,92,.1)}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @media (max-width:860px){.about .card{max-width:420px}}
+  .sign{display:flex;gap:10px;margin-top:28px;flex-wrap:wrap}
+  .sign span{border:1px solid var(--line-d);border-radius:999px;padding:9px 16px;font-size:14px;color:#cfc9bd}
 
   /* cta */
-  .cta{background:var(--ink);color:#fff;text-align:center}
-  .cta h2{max-width:720px;margin:12px auto 16px}
-  .cta p{color:#c9c5bd;max-width:560px;margin:0 auto}
-  .cta .ctas{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:32px}
+  .cta{text-align:center;padding:150px 0;overflow:hidden}
+  .cta h2{font-size:clamp(46px,8vw,110px);max-width:1000px;margin:18px auto 0}
+  .cta .ctas{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:44px}
+  .ring{position:absolute;border:1px solid rgba(201,164,92,.18);border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none}
 
-  .wa{position:fixed;right:18px;bottom:18px;z-index:20;width:56px;height:56px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;box-shadow:0 8px 24px -6px rgba(0,0,0,.4);transition:transform .2s}
-  .wa:hover{transform:scale(1.07)}
+  footer{border-top:1px solid var(--line-d);padding:34px 0;color:#7d786f;font-size:14px}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+  footer nav a{margin-left:18px;color:#bbb}
+  footer nav a:hover{color:var(--gold-2)}
+
+  .wa{position:fixed;right:18px;bottom:18px;z-index:60;width:58px;height:58px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;box-shadow:0 10px 30px -8px rgba(0,0,0,.6);transition:transform .3s var(--ease)}
+  .wa:hover{transform:scale(1.08) rotate(-6deg)}
   .wa svg{width:30px;height:30px}
-  .feat p a{color:var(--text);text-decoration-color:var(--gold)}
-  footer{background:#0a0a0a;color:#8d887f;font-size:14px;padding:32px 0}
-  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
-  footer a{color:#c9c5bd;text-decoration:none;margin-left:18px}
-  footer a:first-child{margin-left:0}
-  footer a:hover{color:var(--gold-2)}
 </style>
 </head>
 <body>
 
-<header>
+<header id="top">
   <div class="wrap">
-    <a class="brand" href="#">
-      <img class="mono" src="img/monograma.png" alt="Salem &amp; Salem">
-      <div><span>Salem &amp; Salem</span><small>Gestión contable</small></div>
-    </a>
+    <a class="brand" href="#"><img src="img/monograma.png" alt=""><b>Salem &amp; Salem</b></a>
     <nav>
-      <a href="#enfoque">Enfoque</a>
-      <a href="#servicios">Servicios</a>
-      <a href="#como">Cómo trabajamos</a>
-      <a href="#nosotros">Nosotros</a>
-      <a class="btn" href="https://calendar.app.google/9eT5BBXbAcCpmySe7" target="_blank" rel="noopener">Agendar<span class="wide"> consulta</span></a>
+      <a class="l" href="#enfoque">Enfoque</a>
+      <a class="l" href="#servicios">Servicios</a>
+      <a class="l" href="#nosotros">Nosotros</a>
+      <a class="btn sm" href="https://calendar.app.google/9eT5BBXbAcCpmySe7" target="_blank" rel="noopener">Agendar <span class="ar">→</span></a>
     </nav>
   </div>
 </header>
 
-<section class="hero">
-  <div class="wrap">
-    <div class="eyebrow">Contadores públicos matriculados · Argentina</div>
-    <h1>Tu contador no debería ser solo <em>el que liquida impuestos.</em></h1>
-    <p>Miramos tu caso en particular: lo que tenés que cumplir y dónde podés optimizar tu plata. Orden, control y decisiones con criterio.</p>
-    <div class="ctas">
-      <a class="btn" href="https://calendar.app.google/9eT5BBXbAcCpmySe7" target="_blank" rel="noopener">Agendar consulta sin cargo</a>
-      <a class="btn ghost" href="#enfoque">Cómo trabajamos</a>
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="glow"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="kicker rv">Contadores públicos · Argentina</div>
+      <h1 class="rv d1">Tu contador no tiene que ser <span class="strike">el que liquida</span><br>sino el que <span class="swap" id="swap"><span>planifica.</span></span></h1>
+      <p class="lead rv d2">Miramos tu caso en particular: lo que tenés que cumplir y dónde podés optimizar tu plata.</p>
+      <div class="ctas rv d3">
+        <a class="btn" href="https://calendar.app.google/9eT5BBXbAcCpmySe7" target="_blank" rel="noopener">Consulta sin cargo <span class="ar">→</span></a>
+        <a class="btn ghost" href="#enfoque">Ver cómo trabajamos</a>
+      </div>
     </div>
-    <div class="note">Primera consulta y diagnóstico sin cargo · 15 minutos por videollamada</div>
+    <div class="hero-photo rv d2">
+      <picture>
+        <source srcset="img/matias-vanessa.webp" type="image/webp">
+        <img src="img/matias-vanessa.jpg" width="900" height="1065" alt="Vanessa y Matías Salem">
+      </picture>
+      <div class="badge"><span class="dot"></span><div>Línea directa con nosotros<small>WhatsApp y mail, sin tickets</small></div></div>
+    </div>
   </div>
 </section>
 
-<div class="wrap">
-  <div class="paths">
-    <a class="path" href="#servicios">
-      <div class="eyebrow">Camino 1</div>
-      <h3>Tengo un negocio o una empresa</h3>
-      <ul>
-        <li>Contabilidad integral y balances</li>
-        <li>Impuestos, sueldos y cargas sociales</li>
-        <li>Planificación para pagar lo justo</li>
-        <li>Regularización de deudas y planes de pago</li>
-      </ul>
-      <span class="go">Ver servicios</span>
-    </a>
-    <a class="path" href="#online">
-      <div class="eyebrow">Camino 2</div>
-      <h3>Vendo online o soy monotributista</h3>
-      <ul>
-        <li>Altas, bajas y recategorizaciones</li>
-        <li>Mercado Libre, Tiendanube, Instagram</li>
-        <li>Billeteras virtuales y cruces de ARCA</li>
-        <li>Cuándo te conviene pasar a responsable inscripto</li>
-      </ul>
-      <span class="go">Ver preguntas frecuentes</span>
-    </a>
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <span>Vendedores online</span><span>Monotributo</span><span>PyMEs</span><span>Liquidación de sueldos</span><span>Optimización impositiva</span><span>Profesionales</span><span>Emprendedores</span><span>Comercios</span>
+    <span>Vendedores online</span><span>Monotributo</span><span>PyMEs</span><span>Liquidación de sueldos</span><span>Optimización impositiva</span><span>Profesionales</span><span>Emprendedores</span><span>Comercios</span>
   </div>
 </div>
 
-<section id="enfoque">
+<!-- ENFOQUE: toggle -->
+<section class="light" id="enfoque">
   <div class="wrap">
-    <div class="eyebrow dark">Nuestro enfoque</div>
-    <h2>Asesoramiento personalizado, no genérico.</h2>
-    <p class="lead">La mayoría de los estudios trabaja en serie. Y la IA mal usada vuelve todo todavía más genérico. Nosotros la usamos al revés: automatizamos lo operativo para dedicarle más tiempo a lo que de verdad te hace ganar plata, la estrategia.</p>
-    <div class="compare">
-      <div class="card no">
-        <h3>Contabilidad genérica</h3>
-        <ul>
-          <li>Se liquida lo que corresponde y listo</li>
-          <li>Te enterás de los cambios cuando ya es tarde</li>
-          <li>Saldos a favor y deducciones que nadie revisa</li>
-          <li>Respuestas iguales para todos los casos</li>
-        </ul>
+    <div class="cmp-head">
+      <div>
+        <div class="kicker rv">Nuestro enfoque</div>
+        <h2 class="rv d1">Genérico <em>vs.</em> a tu medida.</h2>
       </div>
-      <div class="card yes">
-        <h3>Salem &amp; Salem</h3>
-        <ul>
-          <li>Analizamos tu situación particular</li>
-          <li>Te avisamos antes de que algo te afecte</li>
-          <li>Buscamos activamente dónde podés optimizar</li>
-          <li>Trato directo con Matías y Vanessa</li>
-        </ul>
+      <div class="switch rv d2" role="tablist">
+        <span class="pill"></span>
+        <button role="tab" class="on" data-v="gen">Un estudio genérico</button>
+        <button role="tab" data-v="salem">Salem &amp; Salem</button>
       </div>
     </div>
-  </div>
-</section>
-
-<section id="servicios" class="alt">
-  <div class="wrap">
-    <div class="eyebrow dark">Servicios</div>
-    <h2>Contabilidad y gestión integral.</h2>
-    <p class="lead">Para empresas, PyMEs, vendedores online, profesionales y particulares.</p>
-    <div class="grid">
-      <div class="svc"><div class="n">01</div><h3>Monotributo</h3><p>Altas, bajas y recategorizaciones. Que estés en la categoría correcta y sin riesgo de exclusión.</p></div>
-      <div class="svc"><div class="n">02</div><h3>Vendedores online</h3><p>Gestión fiscal para tiendas propias, Mercado Libre e Instagram. Cobros, billeteras y cruces de ARCA.</p></div>
-      <div class="svc"><div class="n">03</div><h3>Optimización impositiva</h3><p>Saldos a favor de IVA, deducciones que se pierden y Ganancias. Pagar lo justo, no de más.</p></div>
-      <div class="svc"><div class="n">04</div><h3>Liquidación de sueldos</h3><p>Recibos, cargas sociales y cambios en la normativa laboral para tu empresa.</p></div>
-      <div class="svc"><div class="n">05</div><h3>Regularización de deudas</h3><p>Planes de pago, regularización fiscal y protección de tu patrimonio, paso a paso.</p></div>
-      <div class="svc"><div class="n">06</div><h3>Contabilidad para empresas</h3><p>Balances, sociedades y la información ordenada para tomar decisiones con criterio.</p></div>
+    <div class="cmp" id="cmp">
+      <div class="flip rv"><div class="in"><div class="face a"><span class="ic">01</span><p>Liquida y listo.</p></div><div class="face b"><span class="ic">01 · Análisis</span><p>Mira tu caso puntual.</p></div></div></div>
+      <div class="flip rv d1"><div class="in"><div class="face a"><span class="ic">02</span><p>Te enterás tarde de los cambios.</p></div><div class="face b"><span class="ic">02 · Anticipación</span><p>Te avisa antes de que te afecte.</p></div></div></div>
+      <div class="flip rv d2"><div class="in"><div class="face a"><span class="ic">03</span><p>Saldos a favor que nadie revisa.</p></div><div class="face b"><span class="ic">03 · Optimización</span><p>Busca dónde podés ahorrar.</p></div></div></div>
+      <div class="flip rv d3"><div class="in"><div class="face a"><span class="ic">04</span><p>Mesa de entradas y tickets.</p></div><div class="face b"><span class="ic">04 · Cercanía</span><p>Hablás directo con nosotros.</p></div></div></div>
     </div>
   </div>
 </section>
 
-<section class="darksec">
+<!-- CAMINOS -->
+<section class="dark">
   <div class="wrap">
-    <div class="eyebrow">A quién acompañamos</div>
-    <h2>Cada contribuyente tiene su historia. Por eso no hay dos planes iguales.</h2>
-    <p class="lead">Trabajamos con negocios y personas de toda Argentina, de forma 100% remota.</p>
-    <div class="tags">
-      <span>Vendedores online</span>
-      <span>Comercios</span>
-      <span>PyMEs</span>
-      <span>Emprendedores</span>
-      <span>Profesionales</span>
-      <span>Monotributistas</span>
-      <span>Particulares</span>
+    <div class="kicker rv">¿Por dónde empezamos?</div>
+    <h2 class="rv d1">Elegí tu <em>camino.</em></h2>
+    <div class="paths">
+      <details class="path rv" name="path">
+        <summary><div><div class="num">Camino 01</div><h3>Tengo un negocio<br>o una empresa</h3></div><span class="plus"></span></summary>
+        <div class="body"><div><div class="chips"><span class="chip">Contabilidad y balances</span><span class="chip">Impuestos</span><span class="chip">Sueldos y cargas sociales</span><span class="chip">Planificación fiscal</span><span class="chip">Planes de pago</span></div></div></div>
+      </details>
+      <details class="path rv d1" name="path">
+        <summary><div><div class="num">Camino 02</div><h3>Vendo online o soy<br>monotributista</h3></div><span class="plus"></span></summary>
+        <div class="body"><div><div class="chips"><span class="chip">Altas y recategorizaciones</span><span class="chip">Mercado Libre y Tiendanube</span><span class="chip">Billeteras virtuales</span><span class="chip">Cruces de ARCA</span><span class="chip">Pase a responsable inscripto</span></div></div></div>
+      </details>
     </div>
   </div>
 </section>
 
-<section id="online">
-  <div class="wrap split">
+<!-- SERVICIOS -->
+<section class="light" id="servicios">
+  <div class="wrap">
+    <div class="kicker rv">Servicios</div>
+    <h2 class="rv d1">Todo lo contable, <em>en un solo lugar.</em></h2>
+    <div class="svc">
+      <details class="rv" name="svc"><summary><span class="n">01</span><h3>Monotributo</h3><span class="plus"></span></summary><div class="body"><div><p>Altas, bajas y recategorizaciones. Que estés en la categoría correcta y sin riesgo de exclusión.</p></div></div></details>
+      <details class="rv" name="svc"><summary><span class="n">02</span><h3>Vendedores online</h3><span class="plus"></span></summary><div class="body"><div><p>Tiendas propias, Mercado Libre e Instagram: cobros, billeteras y cruces de información con ARCA.</p></div></div></details>
+      <details class="rv" name="svc"><summary><span class="n">03</span><h3>Optimización impositiva</h3><span class="plus"></span></summary><div class="body"><div><p>Saldos a favor de IVA, deducciones que se pierden y Ganancias. Pagar lo justo, no de más.</p></div></div></details>
+      <details class="rv" name="svc"><summary><span class="n">04</span><h3>Liquidación de sueldos</h3><span class="plus"></span></summary><div class="body"><div><p>Recibos, cargas sociales y cambios en la normativa laboral para tu empresa.</p></div></div></details>
+      <details class="rv" name="svc"><summary><span class="n">05</span><h3>Regularización de deudas</h3><span class="plus"></span></summary><div class="body"><div><p>Planes de pago, regularización fiscal y protección de tu patrimonio, paso a paso.</p></div></div></details>
+      <details class="rv" name="svc"><summary><span class="n">06</span><h3>Empresas y sociedades</h3><span class="plus"></span></summary><div class="body"><div><p>Balances, sociedades e información ordenada para decidir con criterio.</p></div></div></details>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ ONLINE -->
+<section class="dark" id="online">
+  <div class="wrap faq-grid">
+    <div class="sticky">
+      <div class="kicker rv">Si vendés online</div>
+      <h2 class="rv d1">Lo que más <em>nos preguntan.</em></h2>
+      <p class="sub rv d2">ARCA cruza cada vez más información. Mejor saberlo antes.</p>
+    </div>
     <div>
-      <div class="eyebrow dark">Si vendés online</div>
-      <h2>Las preguntas que más nos hacen.</h2>
-      <p class="lead">ARCA cruza cada vez más información. Lo que antes pasaba desapercibido hoy genera alertas. Mejor saberlo antes.</p>
+      <details class="q rv" name="q"><summary>¿ARCA ve lo que cobro por Mercado Pago?<span class="plus"></span></summary><div class="body"><div><p>Las billeteras y los bancos informan movimientos a ARCA. Por eso conviene que lo que cobrás y lo que facturás vayan de la mano.</p></div></div></details>
+      <details class="q rv d1" name="q"><summary>¿Estoy en la categoría correcta?<span class="plus"></span></summary><div class="body"><div><p>Depende de lo que facturaste en los últimos 12 meses. Lo revisamos en el diagnóstico sin cargo.</p></div></div></details>
+      <details class="q rv d2" name="q"><summary>¿Puedo cobrar distinto según el medio de pago?<span class="plus"></span></summary><div class="body"><div><p>Es una práctica común, pero tiene implicancias. Te explicamos cómo hacerlo bien según tu caso.</p></div></div></details>
+      <details class="q rv d3" name="q"><summary>¿Transferirme entre cuentas propias me expone?<span class="plus"></span></summary><div class="body"><div><p>Mover plata entre tus cuentas no es venta, pero sí genera movimientos que se ven. Conviene tenerlo ordenado.</p></div></div></details>
+      <details class="q rv d3" name="q"><summary>¿Cuándo me conviene ser responsable inscripto?<span class="plus"></span></summary><div class="body"><div><p>Cuando tu facturación o tus clientes lo piden. Lo vemos con números, no a ojo.</p></div></div></details>
     </div>
-    <ul class="qs">
-      <li>¿ARCA ve lo que cobro por Mercado Pago y otras billeteras?</li>
-      <li>¿Estoy en la categoría correcta de monotributo?</li>
-      <li>¿Puedo cobrar distinto por transferencia, efectivo o tarjeta?</li>
-      <li>¿Transferirme entre cuentas propias me expone?</li>
-      <li>¿Cuándo me conviene pasar a responsable inscripto?</li>
-    </ul>
   </div>
 </section>
 
-<section class="alt" id="como">
+<!-- PROCESO -->
+<section class="light">
   <div class="wrap">
-    <div class="eyebrow dark">Cómo trabajamos</div>
-    <h2>Hablás con tu contador, no con un ticket.</h2>
-    <div class="feats">
-      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg></div><div><h3>Línea directa con tus contadores</h3><p>Nada de tickets ni mesa de entradas: tenés el <a href="https://wa.me/5491165750019" target="_blank" rel="noopener">WhatsApp</a> y el mail de Matías y Vanessa, que son quienes llevan tu cuenta.</p></div></div>
-      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="3"/></svg></div><div><h3>Tecnología en lo operativo</h3><p>Automatizamos lo repetitivo para dedicarle el tiempo a lo que importa: analizar tu caso.</p></div></div>
-      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg></div><div><h3>Te avisamos antes</h3><p>Vencimientos, cambios de normativa o recategorizaciones: te enterás a tiempo, no cuando llega la intimación.</p></div></div>
-      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/><circle cx="12" cy="12" r="9"/></svg></div><div><h3>100% remoto</h3><p>Estés donde estés en Argentina, empezamos por videollamada. No hace falta venir a ninguna oficina.</p></div></div>
+    <div class="kicker rv">Cómo empezamos</div>
+    <h2 class="rv d1">Tres pasos, <em>cero compromiso.</em></h2>
+    <div class="steps" id="steps">
+      <span class="bar"></span>
+      <div class="st"><div class="dot">1</div><h3>Consulta</h3><p>15 minutos para conocer tu caso, sin cargo.</p></div>
+      <div class="st"><div class="dot">2</div><h3>Diagnóstico</h3><p>Qué está bien, qué corregir y dónde ahorrar.</p></div>
+      <div class="st"><div class="dot">3</div><h3>Acompañamiento</h3><p>Un plan a tu medida y nos ocupamos del día a día.</p></div>
     </div>
   </div>
 </section>
 
-<section>
+<!-- COMO TRABAJAMOS -->
+<section class="dark" id="como">
   <div class="wrap">
-    <div class="eyebrow dark">Cómo empezamos</div>
-    <h2>Simple y sin compromiso.</h2>
-    <div class="steps">
-      <div class="step"><h3>Consulta inicial</h3><p>15 minutos por videollamada, sin cargo. Nos contás tu actividad y qué te preocupa.</p></div>
-      <div class="step"><h3>Diagnóstico</h3><p>Revisamos tu situación y te decimos qué está bien, qué hay que corregir y dónde podés ahorrar.</p></div>
-      <div class="step"><h3>Acompañamiento</h3><p>Si te sirve, armamos un plan a tu medida y nos ocupamos del día a día.</p></div>
+    <div class="kicker rv">Cómo trabajamos</div>
+    <h2 class="rv d1">Hablás con tu contador, <em>no con un ticket.</em></h2>
+    <div class="tiles">
+      <div class="tile rv" tabindex="0"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg><div><h3>Línea directa</h3><p>WhatsApp y mail de Matías y Vanessa. Sin mesa de entradas.</p></div></div>
+      <div class="tile rv d1" tabindex="0"><svg viewBox="0 0 24 24"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="3"/></svg><div><h3>IA en lo operativo</h3><p>Automatizamos lo repetitivo para dedicarle el tiempo a tu estrategia.</p></div></div>
+      <div class="tile rv d2" tabindex="0"><svg viewBox="0 0 24 24"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg><div><h3>Te avisamos antes</h3><p>Vencimientos, normativa y recategorizaciones, a tiempo.</p></div></div>
+      <div class="tile rv d3" tabindex="0"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg><div><h3>Matriculados</h3><p>Contadores públicos con firma propia, para lo que haga falta certificar.</p></div></div>
     </div>
   </div>
 </section>
 
-<section id="nosotros" class="team">
+<!-- NOSOTROS -->
+<section class="dark" id="nosotros" style="padding-top:40px">
   <div class="wrap about">
-    <picture class="photo">
-      <source srcset="img/matias-vanessa.webp" type="image/webp">
-      <img src="img/matias-vanessa.jpg" width="900" height="1065" loading="lazy" alt="Vanessa y Matías Salem, contadores de Salem &amp; Salem">
-    </picture>
+    <div class="card rv" id="aboutcard">
+      <img src="img/logo-salem.png" alt="Salem Gestión Contable">
+    </div>
     <div>
-      <img class="teamlogo" src="img/logo-salem.png" alt="Salem Gestión Contable">
-      <div class="eyebrow">Quiénes somos</div>
-      <h2>Matías y Vanessa Salem.</h2>
-      <p class="lead">Contadores públicos matriculados. Somos un estudio joven que cree que el contador tiene que ser un aliado estratégico, no alguien que aparece una vez por mes con un VEP. Usamos la tecnología a nuestro favor para estar más cerca de cada cliente, no más lejos.</p>
+      <div class="kicker rv d1">Quiénes somos</div>
+      <h2 class="rv d1">Matías y <em>Vanessa</em> Salem.</h2>
+      <p class="sub rv d2">Contadores públicos matriculados. Un estudio joven que usa la tecnología para estar más cerca de cada cliente, no más lejos.</p>
+      <div class="sign rv d3"><span>Matriculados</span><span>Trato directo</span><span>A tu medida</span></div>
     </div>
   </div>
 </section>
 
+<!-- CTA -->
 <section class="cta">
-  <div class="wrap">
-    <div class="eyebrow">Primera consulta sin cargo</div>
-    <h2>Contanos tu caso y vemos dónde podés optimizar.</h2>
-    <p>Elegí un horario que te quede cómodo. Son 15 minutos y no hay ningún compromiso.</p>
-    <div class="ctas">
-      <a class="btn" href="https://calendar.app.google/9eT5BBXbAcCpmySe7" target="_blank" rel="noopener">Agendar consulta</a>
+  <span class="ring" style="width:520px;height:520px"></span>
+  <span class="ring" style="width:820px;height:820px"></span>
+  <div class="wrap" style="position:relative">
+    <div class="kicker rv">Primera consulta sin cargo</div>
+    <h2 class="rv d1">Contanos tu caso.<br><em>Vemos dónde optimizar.</em></h2>
+    <div class="ctas rv d2">
+      <a class="btn" href="https://calendar.app.google/9eT5BBXbAcCpmySe7" target="_blank" rel="noopener">Agendar 15 minutos <span class="ar">→</span></a>
       <a class="btn ghost" href="https://wa.me/5491165750019?text=Hola%2C%20quiero%20hacer%20una%20consulta" target="_blank" rel="noopener">Escribinos por WhatsApp</a>
     </div>
   </div>
@@ -350,12 +411,11 @@
 <footer>
   <div class="wrap">
     <div>© 2026 Salem &amp; Salem · Estudio Contable</div>
-    <div>
+    <nav>
       <a href="https://wa.me/5491165750019" target="_blank" rel="noopener">WhatsApp</a>
       <a href="https://www.instagram.com/salem.gestioncontable/" target="_blank" rel="noopener">Instagram</a>
       <a href="https://www.tiktok.com/@salem.gestioncontable" target="_blank" rel="noopener">TikTok</a>
-      <a href="https://calendar.app.google/9eT5BBXbAcCpmySe7" target="_blank" rel="noopener">Agendar</a>
-    </div>
+    </nav>
   </div>
 </footer>
 
@@ -363,5 +423,44 @@
   <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C9 3 3.3 8.6 3.3 15.6c0 2.4.7 4.7 1.9 6.6L3 29l7-2.2c1.8 1 3.9 1.6 6 1.6 7 0 12.7-5.7 12.7-12.7S23 3 16 3zm0 23.2c-2 0-3.9-.6-5.5-1.6l-.4-.2-4.1 1.3 1.3-4-.3-.4a10.4 10.4 0 0 1-1.6-5.6C5.4 9.9 10.1 5.3 16 5.3s10.6 4.7 10.6 10.4S21.8 26.2 16 26.2zm5.8-7.8c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2-.2-.3 0-.5.1-.7l.5-.6.3-.5c.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.6 5.7 5 .8.3 1.4.5 1.9.7.8.3 1.5.2 2.1.1.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.3.2-1.5-.1-.1-.3-.2-.6-.3z"/></svg>
 </a>
 
+<script>
+(() => {
+  // header solid on scroll
+  const hd = document.getElementById('top');
+  const onScroll = () => hd.classList.toggle('solid', scrollY > 20);
+  addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  // reveal on scroll
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold:.15});
+  document.querySelectorAll('.rv, #steps, #aboutcard').forEach(el => io.observe(el));
+
+  // hero word swap
+  const words = ['planifica.', 'anticipa.', 'optimiza.', 'te escucha.'];
+  let i = 0; const sw = document.getElementById('swap');
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) setInterval(() => { i = (i + 1) % words.length; sw.innerHTML = '<span>' + words[i] + '</span>'; }, 2600);
+
+  // hero glow follows pointer
+  const hero = document.getElementById('hero');
+  hero.addEventListener('pointermove', e => { const r = hero.getBoundingClientRect(); const x = Math.min(e.clientX - r.left, r.width * .42); hero.style.setProperty('--mx', x + 'px'); hero.style.setProperty('--my', (e.clientY - r.top) + 'px'); });
+
+  // toggle compare
+  const sw2 = document.querySelector('.switch'), pill = sw2.querySelector('.pill'), cmp = document.getElementById('cmp');
+  const btns = [...sw2.querySelectorAll('button')];
+  const place = b => { pill.style.width = b.offsetWidth + 'px'; pill.style.transform = 'translateX(' + (b.offsetLeft - 5) + 'px)'; };
+  btns.forEach(b => b.addEventListener('click', () => { btns.forEach(x => x.classList.toggle('on', x === b)); place(b); cmp.classList.toggle('salem', b.dataset.v === 'salem'); }));
+  addEventListener('load', () => place(btns[0])); addEventListener('resize', () => place(sw2.querySelector('.on')));
+  // auto-flip once when it comes into view
+  new IntersectionObserver((es, o) => es.forEach(e => { if (e.isIntersecting) { setTimeout(() => btns[1].click(), 1200); o.disconnect(); } }), {threshold:.5}).observe(cmp);
+
+  // details: animate open class (keeps native accessibility)
+  document.querySelectorAll('details').forEach(d => {
+    const sync = () => d.classList.toggle('open', d.open);
+    d.addEventListener('toggle', sync); sync();
+  });
+
+  // tile spotlight
+  document.querySelectorAll('.tile').forEach(t => t.addEventListener('pointermove', e => { const r = t.getBoundingClientRect(); t.style.setProperty('--x', (e.clientX - r.left) + 'px'); t.style.setProperty('--y', (e.clientY - r.top) + 'px'); }));
+})();
+</script>
 </body>
 </html>
