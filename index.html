@@ -169,6 +169,7 @@
   .faq-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:start}
   @media (max-width:900px){.faq-grid{grid-template-columns:1fr;gap:30px}}
   .faq-grid .sticky{position:sticky;top:110px}
+  @media (max-width:900px){.faq-grid .sticky{position:static}}
   .q{border:1px solid var(--line-d);border-radius:18px;background:var(--ink-2);margin-bottom:10px;transition:border-color .3s}
   .q.open{border-color:var(--gold-3)}
   .q summary{list-style:none;cursor:pointer;padding:22px 24px;display:flex;justify-content:space-between;gap:16px;align-items:center;font-size:17px;font-weight:500}
@@ -294,6 +295,20 @@ document.addEventListener('click',function(e){
   </div>
 </div>
 
+<!-- PROCESO -->
+<section class="light" id="pasos" style="background:var(--paper-2)">
+  <div class="wrap">
+    <div class="kicker rv">Cómo empezamos</div>
+    <h2 class="rv d1">Tres pasos, <em>cero compromiso.</em></h2>
+    <div class="steps" id="steps">
+      <span class="bar"></span>
+      <div class="st"><div class="dot">1</div><h3>Consulta</h3><p>30 minutos para conocer tu caso, sin cargo.</p></div>
+      <div class="st"><div class="dot">2</div><h3>Diagnóstico</h3><p>Qué está bien, qué corregir y dónde ahorrar.</p></div>
+      <div class="st"><div class="dot">3</div><h3>Acompañamiento</h3><p>Un plan a tu medida y nos ocupamos del día a día.</p></div>
+    </div>
+  </div>
+</section>
+
 <!-- ENFOQUE: toggle -->
 <section class="light" id="enfoque">
   <div class="wrap">
@@ -365,20 +380,6 @@ document.addEventListener('click',function(e){
       <details class="q rv d2" name="q"><summary>¿Puedo cobrar distinto según el medio de pago?<span class="plus"></span></summary><div class="body"><div><p>Es una práctica común, pero tiene implicancias. Te explicamos cómo hacerlo bien según tu caso.</p></div></div></details>
       <details class="q rv d3" name="q"><summary>¿Transferirme entre cuentas propias me expone?<span class="plus"></span></summary><div class="body"><div><p>Mover plata entre tus cuentas no es venta, pero sí genera movimientos que se ven. Conviene tenerlo ordenado.</p></div></div></details>
       <details class="q rv d3" name="q"><summary>¿Cuándo me conviene ser responsable inscripto?<span class="plus"></span></summary><div class="body"><div><p>Cuando tu facturación o tus clientes lo piden. Lo vemos con números, no a ojo.</p></div></div></details>
-    </div>
-  </div>
-</section>
-
-<!-- PROCESO -->
-<section class="light">
-  <div class="wrap">
-    <div class="kicker rv">Cómo empezamos</div>
-    <h2 class="rv d1">Tres pasos, <em>cero compromiso.</em></h2>
-    <div class="steps" id="steps">
-      <span class="bar"></span>
-      <div class="st"><div class="dot">1</div><h3>Consulta</h3><p>30 minutos para conocer tu caso, sin cargo.</p></div>
-      <div class="st"><div class="dot">2</div><h3>Diagnóstico</h3><p>Qué está bien, qué corregir y dónde ahorrar.</p></div>
-      <div class="st"><div class="dot">3</div><h3>Acompañamiento</h3><p>Un plan a tu medida y nos ocupamos del día a día.</p></div>
     </div>
   </div>
 </section>
