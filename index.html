@@ -246,8 +246,10 @@ fbq('track','PageView');
 document.addEventListener('click',function(e){
   var a=e.target.closest&&e.target.closest('a[href]');if(!a)return;
   var h=a.href;
-  if(h.indexOf('wa.me/')>-1)fbq('track','Contact',{content_name:'WhatsApp'});
-  else if(h.indexOf('calendar.app.google')>-1)fbq('track','Contact',{content_name:'Agenda'});
+  // Embudo: PageView = entró a la web · Contact = tocó WhatsApp o Agendar (objetivo de la campaña)
+  // Schedule = abrió la agenda (WhatsApp = Contact - Schedule). Las reservas se cuentan en Google Calendar.
+  if(h.indexOf('wa.me/')>-1)fbq('track','Contact');
+  else if(h.indexOf('calendar.app.google')>-1){fbq('track','Contact');fbq('track','Schedule');}
 },true);
 </script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1131030586438425&ev=PageView&noscript=1"/></noscript>
